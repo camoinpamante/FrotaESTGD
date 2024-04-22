@@ -19,33 +19,47 @@
   <body>
     {% block container%}
     <div class="container">
-       <form action="{% url 'veiculoregister'%}" method="post">
+
+       <form action="{% url 'registarpedido' veiculo.id%}" method="post">
           {%csrf_token%}
+
           <div class="mb-3 ">
-            <label for="marca" class="form-label">Marca</label>
-            <input type="text" class="form-control" id="marca" aria-describedby="emailHelp" name="marca" required>
+            <label for="data_inicio" class="form-label">Data do inicio </label>
+            <input type="date" class="form-control" id="data_inicio" aria-describedby="emailHelp" name="data_inicio" required>
 
           </div>
            <div class="mb-3 ">
-            <label for="tipo_combustivel" class="form-label">Tipo Combustível</label>
-            <input type="text" class="form-control" id="tipo_combustivel" aria-describedby="emailHelp" name="tipo_combustivel" required>
+            <label for="data_fim" class="form-label">Data Final</label>
+            <input type="date" class="form-control" id="data_fim" aria-describedby="emailHelp" name="data_fim" required>
 
           </div>
            <div class="mb-3 ">
-            <label for="matricula" class="form-label">Matricula</label>
-            <input type="text" class="form-control" id="matricula" aria-describedby="emailHelp" name="matricula" required>
+            <label for="local" class="form-label">Local</label>
+            <input type="text" class="form-control" id="local" aria-describedby="emailHelp" name="local" required>
 
           </div>
 
             <div class="mb-3 ">
-            <label for="description" class="form-label">Descrição</label>
-            <input type="text" class="form-control" id="description" aria-describedby="emailHelp" name="description" required>
+            <label for="combustivel_inicial" class="form-label">Combustivel Inicial</label>
+            <input type="number" class="form-control" id="combustivel_inicial" aria-describedby="emailHelp" name="combustivel_inicial" required>
 
           </div>
            <div class="mb-3 ">
-            <label for="description" class="form-label">Imagem</label>
+            <label for="combustivel_fim" class="form-label">Combustivel final</label>
 
-            <input type="image" class="form-control" id="image" aria-describedby="emailHelp" name="image" required>
+            <input type="number" class="form-control" id="combustivel_fim" aria-describedby="combustivel_fim" name="combustivel_fim" required>
+
+          </div>
+            <div class="mb-3 ">
+            <label for="kilometro_inicial" class="form-label">Kilometro inicial</label>
+
+            <input type="number" class="form-control" id="kilometro_inicial" aria-describedby="kilometro_inicial" name="kilometro_inicial" required>
+
+          </div>
+            <div class="mb-3 ">
+            <label for="kilometro_final" class="form-label">Kilometro final</label>
+
+            <input type="number" class="form-control" id="kilometro_final" aria-describedby="kilometro_final" name="kilometro_final" required>
 
           </div>
 
