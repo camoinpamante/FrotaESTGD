@@ -1,0 +1,67 @@
+<!--  Integração de Sistemas  - Gestão de Frotas
+Alunos Camoin Pamante e Sónia Pimentel
+Página de lista de  veiculos
+-->
+
+{% extends 'base.html'%}
+
+
+{% block content %}
+{% include 'head.html'%}
+{% include 'navbar.html'%}
+
+  <section class="py-5">
+
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+
+
+                    <div>
+                       <a class="btn btn-success btn-sm " href="{%url 'veiculoregister'%}"><i class="bi bi-file-plus-fill" ></i> Adicionar</a>
+                    </div>
+                   <div class="container-fluid">
+<form class="d-flex" role="search" action="{% url 'pesquisarVeiculo'%}" method="get">
+      <input name="marca" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+<br>
+
+                    <table class="table">
+  <thead>
+    <tr>
+
+      <th scope="col">Marca</th>
+      <th scope="col">Matricula</th>
+      <th scope="col">Descrição</th>
+      <th scope="col">tipo_Combustivel</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  {% for veiculo in veiculos %}
+    <tr>
+
+      <td >{{ veiculo.marca }}</td>
+        <td >{{ veiculo.matricula }}</td>
+      <td >{{ veiculo.description }}</td>
+      <td >{{ veiculo.tipo_combustivel }}</td>
+      <td>
+          <td><a class="btn btn-success btn-sm " href="{% url 'editarveiculo' veiculo.pk%}" style="color: white">Editar</a></td>
+          <td><a class="btn btn-danger btn-sm " href="{% url 'eliminarveiculo' veiculo.pk%}" style="color: white">Eliminar</a></td>
+
+      </td>
+
+        {% endfor%}
+    </tr>
+  </tbody>
+</table>
+
+
+                         </div>
+                        </div>
+                    </div>
+</section>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b></b>
+{% endblock %}

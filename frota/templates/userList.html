@@ -1,0 +1,65 @@
+<!--  Integração de Sistemas  - Gestão de Frotas
+Alunos Camoin Pamante e Sónia Pimentel
+Página de lista de utilizadores
+-->
+
+{% extends 'base.html'%}
+
+
+{% block content %}
+{% include 'head.html'%}
+{% include 'navbar.html'%}
+
+  <section class="py-5">
+
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+                    <div>
+                       <a class="btn btn-success btn-sm " href="{%url 'registeruseradmin'%}"><i class="bi bi-file-plus-fill" ></i> Adicionar</a>
+                    </div>
+
+<div class="container-fluid">
+
+    <form class="d-flex" role="search" action="{% url 'find'%}" method="get">
+      <input name="foo" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+
+
+                    <table class="table">
+
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Username</th>
+      <th scope="col">Email</th>
+      <th scope="col">Acão</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in users %}
+    <tr>
+      <td>{{ user.pk }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+
+        <a class="btn btn-success btn-sm " href="{% url 'editaruser' user.pk%}" style="color: white">Editar</a>
+
+       <a class="btn btn-danger btn-sm " href="{% url 'eliminaruser' user.pk%}" style="color: white">Eliminar</a>
+
+        </td>
+        {% endfor%}
+    </tr>
+  </tbody>
+</table>
+
+
+                         </div>
+                        </div>
+                    </div>
+</section>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><b></b>
+{% endblock %}
