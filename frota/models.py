@@ -1,6 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
 import uuid
 
 from django.db import models

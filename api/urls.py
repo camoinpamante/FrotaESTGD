@@ -1,7 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
-# Urls com as respectivas views para os caminhos#
 from django.urls import path
 from .import views
 urlpatterns = [
@@ -11,5 +7,5 @@ urlpatterns = [
  path('veiculos/<int:pk>/', views.crudVeiculoESTGDAPIView.as_view()),
  path('utilizador/', views.ListUtilizadorESTGDAPIView.as_view()),
  path('utilizador/<int:pk>/', views.crudUtilizadorESTGDAPIView.as_view()),
- path('login/', views.LoginView.as_view())
+
 ]

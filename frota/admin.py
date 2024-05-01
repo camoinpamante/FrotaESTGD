@@ -1,6 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
 from django.contrib import admin
 
 from .models import User, Veiculo, Pedido,  Notification

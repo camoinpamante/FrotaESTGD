@@ -1,6 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
 """
 Django settings for ESTGD project.
 
@@ -122,6 +119,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+#Diretorios para a imagem
 STATIC_URL = 'static/'
 STATICFILES_DIRS = ['static/']
 MEDIA_URL = 'media/'
@@ -130,4 +128,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
+#Permite a utilização da classe User do django
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

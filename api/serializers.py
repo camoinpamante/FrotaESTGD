@@ -1,11 +1,9 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
-#Bibliotecas
-from rest_framework import serializers
+from rest_framework import viewsets
+from rest_framework import filters
+from rest_framework import serializers, viewsets
 from frota.models import Veiculo, User, Pedido
 
-# Criação das classes  Serializers Veículo;Utilizador;Pedido e login#
+
 class VeiculoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Veiculo

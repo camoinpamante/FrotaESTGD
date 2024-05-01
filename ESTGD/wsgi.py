@@ -1,7 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
-
 """
 WSGI config for ESTGD project.
 

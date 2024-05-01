@@ -1,9 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-#Este ficheiro contém as views para a web - frota - as funções#
-
-
-#Bibliotecas
 import smtplib
 
 from django.contrib import messages
@@ -17,10 +11,11 @@ from django.db.models import Q
 from .models import Veiculo, User, Pedido, Notification
 
 
-# criação das views
+# Create your views here.
 
 def home(request):
     try:
+        ''' Verificação de login -para ter acesso a página web tens que ser logado. '''
         if request.user.is_authenticated:
            veiculos = Veiculo.objects.all()
            return render(request, 'home.html', {'veiculos': veiculos})
@@ -48,7 +43,6 @@ def login_app(request):
 
 def logout_app(request):
     logout(request)
-
     return redirect('index')
 
 
@@ -150,6 +144,7 @@ def registarpedido(request, veiculo_id):
                             combustivel_inicial =combustivel_inicial,combustivel_fim = combustivel_fim,
                             kilometro_inicial = kilometro_inicial, kilometro_final =kilometro_final)
             nome = request.user.username
+            ''' Caso o pedido não é vazio envia a notificação para administrador '''
             if pedido is not None:
                 pedido.save()
                 funcionario ="admin"
@@ -187,6 +182,7 @@ def find(request):
         if request.method == 'GET':
             pesq = request.GET['foo']
             q = get_object_or_404(User, username=pesq)
+            '''Verifica se o pedido existe na base de dados se não retorna a lista completa'''
             if q is not None:
                 users = User.objects.filter(username=q.username)
                 if users is not None:
@@ -208,7 +204,7 @@ def findPedido(request):
             pedidos = Pedido.objects.filter(user=pesq)
             q = get_object_or_404(Pedido, pk=pedidos.id)
             if q is not None:
-                #pedidos = Pedido.objects.filter(user=q.id)
+
                 if pedidos is not None:
                   return render(request, 'pedidoList.html', {'pedidos': pedidos})
                 elif pedidos is None:
@@ -399,7 +395,9 @@ def usereditado(request, pk):
 def confirmar(request, pedido_id):
   try:
          pedido = get_object_or_404(Pedido, pk=pedido_id)
+         '''Mudar estado do pedido para confirmado'''
          pedido.confirmacao= not pedido.confirmacao
+         '''Envia a notificação ao utilizador'''
          funcionario = pedido.user.username
          mensagem = "O seu pedido foi autorizado !!"
          notificacao = Notification(user= pedido.user,funcionario= funcionario, mensagem=mensagem, confirmacao = False)
@@ -415,9 +413,11 @@ def confirmar(request, pedido_id):
 
 
 def notificacao(request, pk):
+    '''Muda o estado da notificação e elimina da lista'''
     try:
       notificacao = get_object_or_404(Notification, funcionario=pk)
       messages.success(request, "O seu pedido foi autorizado !!")
+
       notificacao.confirmacao = not notificacao.confirmacao
       notificacao.delete()
       return redirect('home')
@@ -426,6 +426,7 @@ def notificacao(request, pk):
       return redirect('home')
 
 def notificationsadmin(request, funcionario):
+    '''Lista notificações do admin'''
     try:
         notificacoes = Notification.objects.filter(funcionario=funcionario)
         return render(request, 'notificationList.html', {'notificacoes':notificacoes})

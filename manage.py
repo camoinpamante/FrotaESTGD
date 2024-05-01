@@ -1,6 +1,3 @@
-# Integração de Sistemas  - Gestão de Frotas#
-#Alunos Camoin Pamante e Sónia Pimentel#
-
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
